@@ -1809,11 +1809,11 @@ static NSString *folderPathForUploadOperations = nil;
      to Bad Guys in production.  Even if the code isn't called,
      if it's in RAM at all, it can be exploited.
      */
-    #ifdef USE_DATA_VERIFICATION_SERVER
-
-        [APCDataVerificationClient uploadDataFromFileAtPath: self.unencryptedZipPath];
-        
-    #endif
+//    #ifdef USE_DATA_VERIFICATION_SERVER
+//
+//        [APCDataVerificationClient uploadDataFromFileAtPath: self.unencryptedZipPath];
+//        
+//    #endif
 
 
 
