@@ -77,6 +77,15 @@
 
 - (void) archiveResults;
 
+/*
+ * See delegate method in ORKTaskViewControllerDelegate of ORKTaskViewController
+ * Does the same thing as that except does not dismiss view controller when it completes
+ */
+- (void) taskViewController: (ORKTaskViewController *) taskViewController
+        didFinishWithReason: (ORKTaskViewControllerFinishReason) reason
+                      error: (nullable NSError *) error
+          dismissOnComplete: (BOOL) dismissOnComplete;
+
 /**
  Subclasses should override these methods
  */

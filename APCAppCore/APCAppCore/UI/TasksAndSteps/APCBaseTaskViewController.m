@@ -204,6 +204,17 @@ NSString * NSStringFromORKTaskViewControllerFinishReason (ORKTaskViewControllerF
         didFinishWithReason: (ORKTaskViewControllerFinishReason) reason
                       error: (nullable NSError *) error
 {
+    [self taskViewController:taskViewController
+         didFinishWithReason:reason
+                       error:error
+           dismissOnComplete:YES];
+}
+
+- (void) taskViewController: (ORKTaskViewController *) taskViewController
+        didFinishWithReason: (ORKTaskViewControllerFinishReason) reason
+                      error: (nullable NSError *) error
+          dismissOnComplete: (BOOL) dismissOnComplete
+{
     NSString *currentStepIdentifier = self.currentStepViewController.step.identifier;
     NSString *taskTitle = self.scheduledTask.taskTitle;
     BOOL shouldLogError = YES;
@@ -287,10 +298,12 @@ NSString * NSStringFromORKTaskViewControllerFinishReason (ORKTaskViewControllerF
     {
         APCLogError2 (error);
     }
-
-    [taskViewController dismissViewControllerAnimated:YES completion:nil];
+    
+    if (dismissOnComplete)
+    {
+        [taskViewController dismissViewControllerAnimated:YES completion:nil];
+    }
 }
-
 
 - (NSString *)taskResultsFilePath
 {
