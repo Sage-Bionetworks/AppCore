@@ -37,5 +37,6 @@
 @interface APCSignUpGeneralInfoViewController : APCSignUpInfoViewController
 
 - (NSArray *)prepareContent;
+- (void)textFieldDidChange:(UITextField *)textField;
 
 @end
