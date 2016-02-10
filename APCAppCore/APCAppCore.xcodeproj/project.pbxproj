@@ -305,6 +305,8 @@
 		80A98DDA1BFD4A290060146F /* APCPasscode.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80A98DDC1BFD4A290060146F /* APCPasscode.storyboard */; };
 		80A98DDD1BFD517C0060146F /* APCLocalization.h in Headers */ = {isa = PBXBuildFile; fileRef = 80A98DB01BFCFE430060146F /* APCLocalization.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		80F856641C57EB3200AB321C /* ResearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80F856631C57EB3200AB321C /* ResearchKit.framework */; };
+		A61315811C6BB77A00A4C0AD /* health_app_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A613157F1C6BB77A00A4C0AD /* health_app_icon@2x.png */; };
+		A61315821C6BB77A00A4C0AD /* health_app_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A61315801C6BB77A00A4C0AD /* health_app_icon@3x.png */; };
 		A7CFE4B51A8B05F4009A171C /* APCStudyOverviewCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = A7CFE4B11A8B05F4009A171C /* APCStudyOverviewCollectionViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A7CFE4B61A8B05F4009A171C /* APCStudyOverviewCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A7CFE4B21A8B05F4009A171C /* APCStudyOverviewCollectionViewCell.m */; };
 		A7CFE4B71A8B05F4009A171C /* APCStudyOverviewCollectionViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = A7CFE4B31A8B05F4009A171C /* APCStudyOverviewCollectionViewController.h */; };
@@ -1059,6 +1061,8 @@
 		80A98DE41BFD56D70060146F /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/APCProfile.strings; sourceTree = "<group>"; };
 		80A98DE51BFD56D70060146F /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/APCPasscode.strings; sourceTree = "<group>"; };
 		80F856631C57EB3200AB321C /* ResearchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ResearchKit.framework; path = "../../researchkit/build/Debug-iphoneos/ResearchKit.framework"; sourceTree = "<group>"; };
+		A613157F1C6BB77A00A4C0AD /* health_app_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "health_app_icon@2x.png"; sourceTree = "<group>"; };
+		A61315801C6BB77A00A4C0AD /* health_app_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "health_app_icon@3x.png"; sourceTree = "<group>"; };
 		A7CFE4B11A8B05F4009A171C /* APCStudyOverviewCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APCStudyOverviewCollectionViewCell.h; sourceTree = "<group>"; };
 		A7CFE4B21A8B05F4009A171C /* APCStudyOverviewCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APCStudyOverviewCollectionViewCell.m; sourceTree = "<group>"; };
 		A7CFE4B31A8B05F4009A171C /* APCStudyOverviewCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APCStudyOverviewCollectionViewController.h; sourceTree = "<group>"; };
@@ -1545,6 +1549,7 @@
 			isa = PBXGroup;
 			children = (
 				08027A3B1A7319AC00B358CC /* consent */,
+				A613157C1C6BB30800A4C0AD /* what-to-expect */,
 				08027A4C1A7319AC00B358CC /* tasks */,
 			);
 			path = Assets;
@@ -2005,6 +2010,15 @@
 				80A98DB51BFD11580060146F /* APCLocalization.m */,
 			);
 			name = Localization;
+			sourceTree = "<group>";
+		};
+		A613157C1C6BB30800A4C0AD /* what-to-expect */ = {
+			isa = PBXGroup;
+			children = (
+				A613157F1C6BB77A00A4C0AD /* health_app_icon@2x.png */,
+				A61315801C6BB77A00A4C0AD /* health_app_icon@3x.png */,
+			);
+			name = "what-to-expect";
 			sourceTree = "<group>";
 		};
 		CB1B241F1C57FE5A009DD367 /* Reminder Tests */ = {
@@ -3534,6 +3548,7 @@
 			files = (
 				08027A951A7319AC00B358CC /* phonetapping@3x.png in Resources */,
 				F5F12AFA1A2F78490015982C /* APCInstructionStep.storyboard in Resources */,
+				A61315811C6BB77A00A4C0AD /* health_app_icon@2x.png in Resources */,
 				08027A861A7319AC00B358CC /* handtapping02@2x.png in Resources */,
 				08027A981A7319AC00B358CC /* sittingman@3x.png in Resources */,
 				08027A7F1A7319AC00B358CC /* consent_02@3x.png in Resources */,
@@ -3577,6 +3592,7 @@
 				08027A8E1A7319AC00B358CC /* walkingman@2x.png in Resources */,
 				08027A971A7319AC00B358CC /* pocket@3x.png in Resources */,
 				08027A8F1A7319AC00B358CC /* walkingman_monitor@2x.png in Resources */,
+				A61315821C6BB77A00A4C0AD /* health_app_icon@3x.png in Resources */,
 				F5F12AC21A2F78490015982C /* APCLearn.storyboard in Resources */,
 				08027A941A7319AC00B358CC /* phonesoundwaves@3x.png in Resources */,
 				CFFDEDFC1A95734000B25581 /* APCSetupTableViewCell.xib in Resources */,

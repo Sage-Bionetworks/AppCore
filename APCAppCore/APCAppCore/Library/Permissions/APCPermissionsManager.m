@@ -392,7 +392,7 @@ static APCPermissionStatus coreMotionPermissionStatus = kPermissionStatusNotDete
 - (NSString *)permissionDescriptionForType:(APCSignUpPermissionsType)type {
     switch (type) {
         case kAPCSignUpPermissionsTypeHealthKit:
-            return NSLocalizedStringWithDefaultValue(@"Press “Allow” to individually specify which general health information the app may read from and write to HealthKit", @"APCAppCore", APCBundle(), @"Press “Allow” to individually specify which general health information the app may read from and write to HealthKit", @"");
+            return NSLocalizedStringWithDefaultValue(@"On the next screen, press \"Allow\" to individually specify which general health information the app may read from and write to the Health app.", @"APCAppCore", APCBundle(), @"On the next screen, press \"Allow\" to individually specify which general health information the app may read from and write to the Health app.", @"");
         case kAPCSignUpPermissionsTypeLocalNotifications:
             return NSLocalizedStringWithDefaultValue(@"Allowing notifications enables the app to show you reminders.", @"APCAppCore", APCBundle(), @"Allowing notifications enables the app to show you reminders.", @"");
         case kAPCSignUpPermissionsTypeLocation:
