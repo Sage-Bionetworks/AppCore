@@ -467,6 +467,13 @@ static NSString * const kAPCPleaseCheckEmailAlertOkButton = @"OK";
         if (error != nil) {
             APCLogError2 (error);
         }
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSString *message = @"Verification email has been resent";
+            NSString *localizedMessage = NSLocalizedStringWithDefaultValue(message, @"APCAppCore", APCBundle(), message, @"");
+            UIAlertController *alertController = [UIAlertController simpleAlertWithTitle:@"" message:localizedMessage];
+            [self presentViewController:alertController animated:YES completion:nil];
+        });
      }];
 }
 
