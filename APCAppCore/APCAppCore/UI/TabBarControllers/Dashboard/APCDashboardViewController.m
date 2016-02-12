@@ -408,8 +408,17 @@ static CGFloat const kAPCLineGraphCellHeight = 225.0f;
     APCTableViewDashboardItem *item = (APCTableViewDashboardItem *)[self itemForIndexPath:indexPath];
     
     APCDashboardMoreInfoViewController *moreInfoViewController = [[UIStoryboard storyboardWithName:@"APCDashboard" bundle:[NSBundle appleCoreBundle]] instantiateViewControllerWithIdentifier:@"APCDashboardMoreInfoViewController"];
+    
+    if (item.infoTitle != nil)
+    {
+        moreInfoViewController.titleString = item.infoTitle;
+    }
+    else
+    {
+        moreInfoViewController.titleString = item.caption;
+    }
+    
     moreInfoViewController.info = item.info;
-    moreInfoViewController.titleString = item.caption;
     
     // Get the snapshot
     UIView *targetView = self.tabBarController.view;

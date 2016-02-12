@@ -172,6 +172,12 @@
 
 @property (nonatomic, strong) UIColor *tintColor;
 @property (nonatomic, strong) NSString *info;
+
+/*
+ * If nil, caption will be used for infoTitle
+ */
+@property (nonatomic, strong) NSString *infoTitle;
+
 @property (nonatomic, strong) NSString *taskId;
 
 @end
