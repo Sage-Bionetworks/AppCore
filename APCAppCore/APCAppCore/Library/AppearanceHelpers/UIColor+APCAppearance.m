@@ -139,6 +139,10 @@
     return [APCAppearanceInfo valueForAppearanceKey:kPrimaryNavBarColorKey];
 }
 
++ (UIColor *)appConfirmationCheckmarkColor {
+    return [APCAppearanceInfo valueForAppearanceKey:kConfirmationCheckmarkColorKey];
+}
+
 + (UIColor *)colorForTaskId:(NSString *)taskId
 {
     return [APCAppearanceInfo valueForAppearanceKey:taskId];

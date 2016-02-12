@@ -198,7 +198,6 @@
 		5B9B36AC1A95DC1700389F42 /* APCActivitiesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B9B36AA1A95DC1700389F42 /* APCActivitiesTableViewCell.m */; };
 		5B9B36AF1A95DEEB00389F42 /* APCActivitiesSectionHeaderView.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B9B36AD1A95DEEB00389F42 /* APCActivitiesSectionHeaderView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5B9B36B01A95DEEB00389F42 /* APCActivitiesSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B9B36AE1A95DEEB00389F42 /* APCActivitiesSectionHeaderView.m */; };
-		5B9B36B21A95DF0C00389F42 /* APCActivitiesSectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B9B36B11A95DF0C00389F42 /* APCActivitiesSectionHeaderView.xib */; };
 		5BB10C0A1A91D540002D2DD2 /* APCStudyVideoCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 5BB10C081A91D540002D2DD2 /* APCStudyVideoCollectionViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5BB10C0B1A91D540002D2DD2 /* APCStudyVideoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB10C091A91D540002D2DD2 /* APCStudyVideoCollectionViewCell.m */; };
 		5BB10C131A91F970002D2DD2 /* APCWebViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 5BB10C111A91F970002D2DD2 /* APCWebViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -315,6 +314,7 @@
 		A61315961C6C11BB00A4C0AD /* APCCompletedActivitiesTodayModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A61315931C6C11BB00A4C0AD /* APCCompletedActivitiesTodayModalViewController.m */; };
 		A66589121C6D597D002DAEDE /* APCCompletedActivitiesTodayModalPresentationController.h in Headers */ = {isa = PBXBuildFile; fileRef = A66589101C6D597D002DAEDE /* APCCompletedActivitiesTodayModalPresentationController.h */; };
 		A66589131C6D597D002DAEDE /* APCCompletedActivitiesTodayModalPresentationController.m in Sources */ = {isa = PBXBuildFile; fileRef = A66589111C6D597D002DAEDE /* APCCompletedActivitiesTodayModalPresentationController.m */; };
+		A63E241F1C6E665900E7B537 /* APCActivitiesSectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A63E241E1C6E665900E7B537 /* APCActivitiesSectionHeaderView.xib */; };
 		A7CFE4B51A8B05F4009A171C /* APCStudyOverviewCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = A7CFE4B11A8B05F4009A171C /* APCStudyOverviewCollectionViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A7CFE4B61A8B05F4009A171C /* APCStudyOverviewCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A7CFE4B21A8B05F4009A171C /* APCStudyOverviewCollectionViewCell.m */; };
 		A7CFE4B71A8B05F4009A171C /* APCStudyOverviewCollectionViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = A7CFE4B31A8B05F4009A171C /* APCStudyOverviewCollectionViewController.h */; };
@@ -953,7 +953,6 @@
 		5B9B36AA1A95DC1700389F42 /* APCActivitiesTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APCActivitiesTableViewCell.m; sourceTree = "<group>"; };
 		5B9B36AD1A95DEEB00389F42 /* APCActivitiesSectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APCActivitiesSectionHeaderView.h; sourceTree = "<group>"; };
 		5B9B36AE1A95DEEB00389F42 /* APCActivitiesSectionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APCActivitiesSectionHeaderView.m; sourceTree = "<group>"; };
-		5B9B36B11A95DF0C00389F42 /* APCActivitiesSectionHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = APCActivitiesSectionHeaderView.xib; sourceTree = "<group>"; };
 		5BB10C081A91D540002D2DD2 /* APCStudyVideoCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APCStudyVideoCollectionViewCell.h; sourceTree = "<group>"; };
 		5BB10C091A91D540002D2DD2 /* APCStudyVideoCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APCStudyVideoCollectionViewCell.m; sourceTree = "<group>"; };
 		5BB10C111A91F970002D2DD2 /* APCWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APCWebViewController.h; sourceTree = "<group>"; };
@@ -1079,6 +1078,7 @@
 		A61315931C6C11BB00A4C0AD /* APCCompletedActivitiesTodayModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APCCompletedActivitiesTodayModalViewController.m; sourceTree = "<group>"; };
 		A66589101C6D597D002DAEDE /* APCCompletedActivitiesTodayModalPresentationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APCCompletedActivitiesTodayModalPresentationController.h; sourceTree = "<group>"; };
 		A66589111C6D597D002DAEDE /* APCCompletedActivitiesTodayModalPresentationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APCCompletedActivitiesTodayModalPresentationController.m; sourceTree = "<group>"; };
+		A63E241E1C6E665900E7B537 /* APCActivitiesSectionHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = APCActivitiesSectionHeaderView.xib; sourceTree = "<group>"; };
 		A7CFE4B11A8B05F4009A171C /* APCStudyOverviewCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APCStudyOverviewCollectionViewCell.h; sourceTree = "<group>"; };
 		A7CFE4B21A8B05F4009A171C /* APCStudyOverviewCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APCStudyOverviewCollectionViewCell.m; sourceTree = "<group>"; };
 		A7CFE4B31A8B05F4009A171C /* APCStudyOverviewCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APCStudyOverviewCollectionViewController.h; sourceTree = "<group>"; };
@@ -1867,7 +1867,7 @@
 				5B9B36A61A95D9C900389F42 /* APCActivitiesBasicTableViewCell.m */,
 				5B9B36AD1A95DEEB00389F42 /* APCActivitiesSectionHeaderView.h */,
 				5B9B36AE1A95DEEB00389F42 /* APCActivitiesSectionHeaderView.m */,
-				5B9B36B11A95DF0C00389F42 /* APCActivitiesSectionHeaderView.xib */,
+				A63E241E1C6E665900E7B537 /* APCActivitiesSectionHeaderView.xib */,
 				5B9B36A91A95DC1700389F42 /* APCActivitiesTableViewCell.h */,
 				5B9B36AA1A95DC1700389F42 /* APCActivitiesTableViewCell.m */,
 				5B9B36A11A95D9B500389F42 /* APCActivitiesTintedTableViewCell.h */,
@@ -3611,7 +3611,6 @@
 				08027A7B1A7319AC00B358CC /* consent_05@2x.png in Resources */,
 				08027A991A7319AC00B358CC /* walkingman@3x.png in Resources */,
 				08027A961A7319AC00B358CC /* phonewaves@3x.png in Resources */,
-				5B9B36B21A95DF0C00389F42 /* APCActivitiesSectionHeaderView.xib in Resources */,
 				369E28141A96B7A200D35DFA /* APCMedTrackerPredefinedMedications.plist in Resources */,
 				A61315861C6BDCFB00A4C0AD /* checkbox_unchecked@2x.png in Resources */,
 				7BEC13D31AA3AA5B00CA316C /* APCActivityTracking.storyboard in Resources */,
@@ -3644,6 +3643,7 @@
 				CFFDEDDC1A95734000B25581 /* APCFrequencyDayTableViewCell.xib in Resources */,
 				08027A771A7319AC00B358CC /* consent_01@2x.png in Resources */,
 				CFFDEDE21A95734000B25581 /* APCMedicationFrequencyViewController.xib in Resources */,
+				A63E241F1C6E665900E7B537 /* APCActivitiesSectionHeaderView.xib in Resources */,
 				369E27F81A96B7A200D35DFA /* APCMedicationSampleSchedules.plist in Resources */,
 				08027A901A7319AC00B358CC /* handtapping01@3x.png in Resources */,
 				08027A791A7319AC00B358CC /* consent_03@2x.png in Resources */,

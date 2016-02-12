@@ -35,22 +35,18 @@
 #import "APCActivitiesViewSection.h"
 #import "APCAppDelegate.h"
 #import "APCBaseTaskViewController.h"
-#import "APCCircularProgressView.h"
-#import "APCConstants.h"
 #import "APCDataMonitor+Bridge.h"
 #import "APCLog.h"
 #import "APCPermissionsManager.h"
 #import "APCScheduler.h"
 #import "APCSpinnerViewController.h"
 #import "APCTask.h"
-#import "APCTaskGroup.h"
 #import "APCTasksReminderManager.h"
-#import "APCUtilities.h"
 #import "NSBundle+Helper.h"
 #import "NSDate+Helper.h"
 #import "UIAlertController+Helper.h"
 #import "UIColor+APCAppearance.h"
-#import "NSDictionary+APCAdditions.h"
+#import "UIFont+APCAppearance.h"
 #import "APCLocalization.h"
 #import "APCCompletedActivitiesTodayModalViewController.h"
 #import "APCCompletedActivitiesTodayModalPresentationController.h"
@@ -58,7 +54,12 @@
 
 static CGFloat const kTintedCellHeight             = 65;
 static CGFloat const kTableViewSectionHeaderHeight = 77;
-
+static CGFloat const kActivityHeaderTitleLabelFontSize = 20.f;
+static CGFloat const kActivityHeaderSubTitleLabelFontSize = 12.f;
+static NSString *const kActivityHeaderBackgroundImage = @"Activity_Header_Background";
+static NSString *const kAPCSectionTitleKeepGoing = @"Additional Activities";
+static NSString *const kAPCSectionSubtitleKeepGoing = @"Try one of these extra activities to enhance your study experience.";
+static NSString *const kAPCSectionSubtitleYesterday = @"Below are your incomplete tasks from yesterday. For your reference only.";
 
 @interface APCActivitiesViewController ()
 
@@ -260,12 +261,35 @@ NSUInteger previousCountOfRemainingTasksToday;
 - (UIView *)     tableView: (UITableView *) tableView
     viewForHeaderInSection: (NSInteger) sectionNumber
 {
-    NSString *headerViewIdentifier = NSStringFromClass ([APCActivitiesSectionHeaderView class]);
-    APCActivitiesSectionHeaderView *headerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier: headerViewIdentifier];
-    APCActivitiesViewSection *section = [self sectionForSectionNumber: sectionNumber];
+    NSString *headerViewIdentifier = NSStringFromClass([APCActivitiesSectionHeaderView class]);
+    APCActivitiesSectionHeaderView *headerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:headerViewIdentifier];
+    APCActivitiesViewSection *section = [self sectionForSectionNumber:sectionNumber];
 
-    headerView.titleLabel.text = section.title;
-    headerView.subTitleLabel.text = section.subtitle;
+    if (sectionNumber == 0) {
+        headerView.backgroundImageView.image = [UIImage imageNamed:kActivityHeaderBackgroundImage];
+        headerView.titleLabel.font = [UIFont appLightFontWithSize:kActivityHeaderTitleLabelFontSize];
+        headerView.subTitleLabel.font = [UIFont boldSystemFontOfSize:kActivityHeaderSubTitleLabelFontSize];
+        headerView.titleLabel.textAlignment = NSTextAlignmentCenter;
+        headerView.subTitleLabel.textAlignment = NSTextAlignmentCenter;
+    } else {
+        headerView.backgroundImageView.image = nil;
+        headerView.titleLabel.textAlignment = NSTextAlignmentLeft;
+        headerView.subTitleLabel.textAlignment = NSTextAlignmentLeft;
+    }
+
+    [headerView removeConstraint:headerView.titleLabelTopConstraint];
+    headerView.titleLabelTopConstraint = [NSLayoutConstraint constraintWithItem:headerView.titleLabel
+                                                                      attribute:NSLayoutAttributeTop
+                                                                      relatedBy:NSLayoutRelationEqual
+                                                                         toItem:headerView
+                                                                      attribute:NSLayoutAttributeTop
+                                                                     multiplier:1
+                                                                       constant:sectionNumber == 0 ? 18 : 10];
+    
+    [headerView addConstraint:headerView.titleLabelTopConstraint];
+    
+    headerView.titleLabel.text = [section isKeepGoingSection] ? [kAPCSectionTitleKeepGoing uppercaseString] : [section isTodaySection] ? section.title : [section.title uppercaseString];
+    headerView.subTitleLabel.text = [section isKeepGoingSection] ? kAPCSectionSubtitleKeepGoing : [section isYesterdaySection] ? kAPCSectionSubtitleYesterday : section.subtitle;
     
     return headerView;
 }
