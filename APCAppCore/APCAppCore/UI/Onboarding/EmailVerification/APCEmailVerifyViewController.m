@@ -132,23 +132,23 @@ static NSString * const kAPCPleaseCheckEmailAlertOkButton = @"OK";
 {
     [self.logoImageView setImage:[UIImage imageNamed:@"logo_disease"]];
     
-    [self.topMessageLabel setFont:[UIFont systemFontOfSize:13.0f]];
+    [self.topMessageLabel setFont:[UIFont appRegularFontWithSize:13.0f]];
     [self.topMessageLabel setTextColor:[UIColor appSecondaryColor1]];
     
-    [self.emailLabel setFont:[UIFont systemFontOfSize:20.0f weight:UIFontWeightMedium]];
+    [self.emailLabel setFont:[UIFont appMediumFontWithSize:20.0f]];
     [self.emailLabel setAdjustsFontSizeToFitWidth:YES];
     [self.emailLabel setTextColor:[UIColor appSecondaryColor1]];
     
     [self.middleMessageLabel setFont:[UIFont appRegularFontWithSize:17.0f]];
     [self.middleMessageLabel setTextColor:[UIColor appSecondaryColor1]];
     
-    [self.bottomMessageLabel setFont:[UIFont systemFontOfSize:11.0f]];
+    [self.bottomMessageLabel setFont:[UIFont appRegularFontWithSize:11.0f]];
     [self.bottomMessageLabel setTextColor:[UIColor appSecondaryColor3]];
     
-    [self.changeEmailButton.titleLabel setFont:[UIFont systemFontOfSize:13.0f]];
+    [self.changeEmailButton.titleLabel setFont:[UIFont appRegularFontWithSize:13.0f]];
     [self.changeEmailButton setTitleColor:[UIColor appPrimaryColor] forState:UIControlStateNormal];
     
-    [self.resendEmailButton.titleLabel setFont:[UIFont systemFontOfSize:13.0f]];
+    [self.resendEmailButton.titleLabel setFont:[UIFont appRegularFontWithSize:13.0f]];
     [self.resendEmailButton setTitleColor:[UIColor appPrimaryColor] forState:UIControlStateNormal];
     
     CGRect screenRect = [[UIScreen mainScreen] bounds];
