@@ -469,7 +469,14 @@ static NSString * const kAPCPleaseCheckEmailAlertOkButton = @"OK";
         }
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            NSString *message = @"Verification email has been resent";
+            NSString *message = nil;
+            
+            if (error != nil) {
+                message = @"Unable to connect to server, please check your connection";
+            } else {
+                message = @"Verification email has been resent";
+            }
+            
             NSString *localizedMessage = NSLocalizedStringWithDefaultValue(message, @"APCAppCore", APCBundle(), message, @"");
             UIAlertController *alertController = [UIAlertController simpleAlertWithTitle:@"" message:localizedMessage];
             [self presentViewController:alertController animated:YES completion:nil];
