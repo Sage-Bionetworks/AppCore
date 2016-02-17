@@ -52,6 +52,8 @@
 #import "UIColor+APCAppearance.h"
 #import "NSDictionary+APCAdditions.h"
 #import "APCLocalization.h"
+#import "APCTutorialModalViewController.h"
+#import "APCModalPresentationController.h"
 
 
 static CGFloat const kTintedCellHeight             = 65;
@@ -107,6 +109,11 @@ static CGFloat const kTableViewSectionHeaderHeight = 77;
 
     // make sure we know the state of CoreMotion permissions so it's available when we need it
     [self.permissionManager requestForPermissionForType:kAPCSignUpPermissionsTypeCoremotion withCompletion:nil];
+
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if (![defaults valueForKey:kShowTutorialEnabledKey]) {
+        [defaults setBool:YES forKey:kShowTutorialEnabledKey];
+    }
 }
 
 - (void) viewWillAppear: (BOOL) animated
@@ -502,7 +509,22 @@ static CGFloat const kTableViewSectionHeaderHeight = 77;
 
 - (void) dismiss
 {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:YES completion:^{
+        if ([[NSUserDefaults standardUserDefaults] boolForKey:kShowTutorialEnabledKey]) {
+            [self showTutorialModal];
+        }
+    }];
+}
+
+- (void)showTutorialModal {
+    APCTutorialModalViewController *tutorialViewController = [[APCTutorialModalViewController alloc] initWithNibName:@"APCTutorialModal"
+                                                                                                              bundle:APCBundle()];
+    APCModalPresentationController *presentationController = [[APCModalPresentationController alloc] initWithPresentedViewController:tutorialViewController
+                                                                                                            presentingViewController:self];
+    tutorialViewController.transitioningDelegate = presentationController;
+    [self presentViewController:tutorialViewController animated:YES completion:NULL];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setBool:NO forKey:kShowTutorialEnabledKey];
 }
 
 - (void) updateBadge
