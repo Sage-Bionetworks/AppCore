@@ -469,16 +469,22 @@ static NSString * const kAPCPleaseCheckEmailAlertOkButton = @"OK";
         }
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            NSString *message = nil;
+            NSString *message, *alertActionTitle;
             
             if (error != nil) {
-                message = @"Unable to connect to server, please check your connection";
+                message          = @"Unable to connect to server, please check your connection";
+                alertActionTitle = @"Retry";
             } else {
-                message = @"Verification email has been resent";
+                message          = @"Verification email has been resent";
+                alertActionTitle = @"OK";
             }
             
-            NSString *localizedMessage = NSLocalizedStringWithDefaultValue(message, @"APCAppCore", APCBundle(), message, @"");
-            UIAlertController *alertController = [UIAlertController simpleAlertWithTitle:@"" message:localizedMessage];
+            NSString *localizedMessage          = NSLocalizedStringWithDefaultValue(message, @"APCAppCore", APCBundle(), message, @"");
+            NSString *localizedAlertActionTitle = NSLocalizedStringWithDefaultValue(alertActionTitle, @"APCAppCore", APCBundle(), alertActionTitle, @"");
+            
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"" message:localizedMessage preferredStyle:UIAlertControllerStyleAlert];
+            [alertController addAction:[UIAlertAction actionWithTitle:localizedAlertActionTitle style:UIAlertActionStyleDefault handler:nil]];
+            
             [self presentViewController:alertController animated:YES completion:nil];
         });
      }];
