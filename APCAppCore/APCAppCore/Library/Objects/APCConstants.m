@@ -244,6 +244,11 @@ NSString *const kActivitiesQueryKeyYesterday    = @"yesterday";
 
 NSString *const kActivitiesRequiresMotionSensor = @"activitiesRequireMotionSensor";
 
+NSString *const kShowTutorialEnabledKey = @"APCShowTutorialEnabledKey";
+NSString *const kTutorialTextInitial = @"APCTutorialTextInitial";
+NSString *const kTutorialTextActivites = @"APCTutorialTextActivites";
+NSString *const kTutorialTextDashboard = @"APCTutorialTextDashboard";
+
 
 
 // ---------------------------------------------------------
