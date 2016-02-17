@@ -883,6 +883,11 @@ static NSString*    const kAppWillEnterForegroundTimeKey    = @"APCWillEnterFore
     self.tabBarController.delegate = self;
     self.tabBarController.tabBar.translucent = NO;
     self.window.rootViewController = self.tabBarController;
+
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if (![defaults valueForKey:kShowTutorialEnabledKey]) {
+        [defaults setBool:YES forKey:kShowTutorialEnabledKey];
+    }
 }
 
 - (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController
