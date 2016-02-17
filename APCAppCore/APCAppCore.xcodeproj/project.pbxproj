@@ -307,8 +307,15 @@
 		80F856641C57EB3200AB321C /* ResearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80F856631C57EB3200AB321C /* ResearchKit.framework */; };
 		A61315811C6BB77A00A4C0AD /* health_app_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A613157F1C6BB77A00A4C0AD /* health_app_icon@2x.png */; };
 		A61315821C6BB77A00A4C0AD /* health_app_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A61315801C6BB77A00A4C0AD /* health_app_icon@3x.png */; };
+		A6BCC5971C74E64600F358EF /* tutorial_arrow_1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6BCC5931C74E64600F358EF /* tutorial_arrow_1@2x.png */; };
+		A6BCC5981C74E64600F358EF /* tutorial_arrow_1@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6BCC5941C74E64600F358EF /* tutorial_arrow_1@3x.png */; };
+		A6BCC5991C74E64600F358EF /* tutorial_arrow_2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6BCC5951C74E64600F358EF /* tutorial_arrow_2@2x.png */; };
+		A6BCC59A1C74E64600F358EF /* tutorial_arrow_2@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6BCC5961C74E64600F358EF /* tutorial_arrow_2@3x.png */; };
 		A6FE21C41C7407350031EBAD /* APCModalPresentationController.h in Headers */ = {isa = PBXBuildFile; fileRef = A6FE21C21C7407350031EBAD /* APCModalPresentationController.h */; };
 		A6FE21C51C7407350031EBAD /* APCModalPresentationController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6FE21C31C7407350031EBAD /* APCModalPresentationController.m */; };
+		A6FE21C71C7412E10031EBAD /* APCTutorialModal.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6FE21C61C7412E10031EBAD /* APCTutorialModal.xib */; };
+		A6FE21CA1C7413480031EBAD /* APCTutorialModalViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = A6FE21C81C7413480031EBAD /* APCTutorialModalViewController.h */; };
+		A6FE21CB1C7413480031EBAD /* APCTutorialModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6FE21C91C7413480031EBAD /* APCTutorialModalViewController.m */; };
 		A7CFE4B51A8B05F4009A171C /* APCStudyOverviewCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = A7CFE4B11A8B05F4009A171C /* APCStudyOverviewCollectionViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A7CFE4B61A8B05F4009A171C /* APCStudyOverviewCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A7CFE4B21A8B05F4009A171C /* APCStudyOverviewCollectionViewCell.m */; };
 		A7CFE4B71A8B05F4009A171C /* APCStudyOverviewCollectionViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = A7CFE4B31A8B05F4009A171C /* APCStudyOverviewCollectionViewController.h */; };
@@ -1065,8 +1072,15 @@
 		80F856631C57EB3200AB321C /* ResearchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ResearchKit.framework; path = "../../researchkit/build/Debug-iphoneos/ResearchKit.framework"; sourceTree = "<group>"; };
 		A613157F1C6BB77A00A4C0AD /* health_app_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "health_app_icon@2x.png"; sourceTree = "<group>"; };
 		A61315801C6BB77A00A4C0AD /* health_app_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "health_app_icon@3x.png"; sourceTree = "<group>"; };
+		A6BCC5931C74E64600F358EF /* tutorial_arrow_1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tutorial_arrow_1@2x.png"; sourceTree = "<group>"; };
+		A6BCC5941C74E64600F358EF /* tutorial_arrow_1@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tutorial_arrow_1@3x.png"; sourceTree = "<group>"; };
+		A6BCC5951C74E64600F358EF /* tutorial_arrow_2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tutorial_arrow_2@2x.png"; sourceTree = "<group>"; };
+		A6BCC5961C74E64600F358EF /* tutorial_arrow_2@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tutorial_arrow_2@3x.png"; sourceTree = "<group>"; };
 		A6FE21C21C7407350031EBAD /* APCModalPresentationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APCModalPresentationController.h; sourceTree = "<group>"; };
 		A6FE21C31C7407350031EBAD /* APCModalPresentationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APCModalPresentationController.m; sourceTree = "<group>"; };
+		A6FE21C61C7412E10031EBAD /* APCTutorialModal.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = APCTutorialModal.xib; sourceTree = "<group>"; };
+		A6FE21C81C7413480031EBAD /* APCTutorialModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APCTutorialModalViewController.h; sourceTree = "<group>"; };
+		A6FE21C91C7413480031EBAD /* APCTutorialModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APCTutorialModalViewController.m; sourceTree = "<group>"; };
 		A7CFE4B11A8B05F4009A171C /* APCStudyOverviewCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APCStudyOverviewCollectionViewCell.h; sourceTree = "<group>"; };
 		A7CFE4B21A8B05F4009A171C /* APCStudyOverviewCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APCStudyOverviewCollectionViewCell.m; sourceTree = "<group>"; };
 		A7CFE4B31A8B05F4009A171C /* APCStudyOverviewCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APCStudyOverviewCollectionViewController.h; sourceTree = "<group>"; };
@@ -1552,6 +1566,7 @@
 		08027A3A1A7319AC00B358CC /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				A6BCC5921C74E62700F358EF /* tutorialModal */,
 				08027A3B1A7319AC00B358CC /* consent */,
 				A613157C1C6BB30800A4C0AD /* what-to-expect */,
 				08027A4C1A7319AC00B358CC /* tasks */,
@@ -2014,6 +2029,27 @@
 				80A98DB51BFD11580060146F /* APCLocalization.m */,
 			);
 			name = Localization;
+			sourceTree = "<group>";
+		};
+		A6BCC5921C74E62700F358EF /* tutorialModal */ = {
+			isa = PBXGroup;
+			children = (
+				A6BCC5931C74E64600F358EF /* tutorial_arrow_1@2x.png */,
+				A6BCC5941C74E64600F358EF /* tutorial_arrow_1@3x.png */,
+				A6BCC5951C74E64600F358EF /* tutorial_arrow_2@2x.png */,
+				A6BCC5961C74E64600F358EF /* tutorial_arrow_2@3x.png */,
+			);
+			name = tutorialModal;
+			sourceTree = "<group>";
+		};
+		A6FE21CC1C74134D0031EBAD /* TutorialModal */ = {
+			isa = PBXGroup;
+			children = (
+				A6FE21C61C7412E10031EBAD /* APCTutorialModal.xib */,
+				A6FE21C81C7413480031EBAD /* APCTutorialModalViewController.h */,
+				A6FE21C91C7413480031EBAD /* APCTutorialModalViewController.m */,
+			);
+			name = TutorialModal;
 			sourceTree = "<group>";
 		};
 		A613157C1C6BB30800A4C0AD /* what-to-expect */ = {
@@ -2863,6 +2899,7 @@
 				F5F1297B1A2F78490015982C /* Dashboard */,
 				F5F129821A2F78490015982C /* Learn */,
 				F5F129881A2F78490015982C /* Profile */,
+				A6FE21CC1C74134D0031EBAD /* TutorialModal */,
 			);
 			path = TabBarControllers;
 			sourceTree = "<group>";
@@ -3359,6 +3396,7 @@
 				368BAFE91A9AD91A00F04ABB /* APCMedTrackerDailyDosageRecord.h in Headers */,
 				CBC2593A1C58077A0091308E /* MockAPCTasksReminderManager.h in Headers */,
 				F5B947F61A73272C0034C522 /* APCParametersDashboardTableViewController.h in Headers */,
+				A6FE21CA1C7413480031EBAD /* APCTutorialModalViewController.h in Headers */,
 				F5F12AF21A2F78490015982C /* APCBaseTaskViewController.h in Headers */,
 				F5F12AF41A2F78490015982C /* APCBaseWithProgressTaskViewController.h in Headers */,
 				F5B947B51A73272C0034C522 /* APCDeviceHardware+APCHelper.h in Headers */,
@@ -3561,10 +3599,12 @@
 				08027A7F1A7319AC00B358CC /* consent_02@3x.png in Resources */,
 				CFFDEDF41A95734000B25581 /* APCMedicationSummaryTableViewCell.xib in Resources */,
 				08027A931A7319AC00B358CC /* heartbeat@3x.png in Resources */,
+				A6BCC5991C74E64600F358EF /* tutorial_arrow_2@2x.png in Resources */,
 				08027A921A7319AC00B358CC /* heart-fitness@3x.png in Resources */,
 				80A98DD41BFD496C0060146F /* APCEmailVerify.storyboard in Resources */,
 				F5F12AB91A2F78490015982C /* APCActivities.storyboard in Resources */,
 				CFFDEDDF1A95734000B25581 /* APCFrequencyTableViewTimesCell.xib in Resources */,
+				A6BCC59A1C74E64600F358EF /* tutorial_arrow_2@3x.png in Resources */,
 				08027A821A7319AC00B358CC /* consent_05@3x.png in Resources */,
 				F5F12B021A2F78490015982C /* APCSimpleTaskSummaryViewController.xib in Resources */,
 				80A98DD71BFD49EC0060146F /* APCProfile.storyboard in Resources */,
@@ -3596,8 +3636,11 @@
 				5B73CAF21A8B3B8C00FFE79C /* APCDashboard.storyboard in Resources */,
 				CFFDEDE51A95734000B25581 /* APCColorSwatchTableViewCell.xib in Resources */,
 				CFFDEDF11A95734000B25581 /* APCMedicationNameViewController.xib in Resources */,
+				A6FE21C71C7412E10031EBAD /* APCTutorialModal.xib in Resources */,
+				A6BCC5981C74E64600F358EF /* tutorial_arrow_1@3x.png in Resources */,
 				08027A8E1A7319AC00B358CC /* walkingman@2x.png in Resources */,
 				08027A971A7319AC00B358CC /* pocket@3x.png in Resources */,
+				A6BCC5971C74E64600F358EF /* tutorial_arrow_1@2x.png in Resources */,
 				08027A8F1A7319AC00B358CC /* walkingman_monitor@2x.png in Resources */,
 				A61315821C6BB77A00A4C0AD /* health_app_icon@3x.png in Resources */,
 				F5F12AC21A2F78490015982C /* APCLearn.storyboard in Resources */,
@@ -3796,6 +3839,7 @@
 				6C8646411AF8077300B46C49 /* APCCorrelationsSelectorViewController.m in Sources */,
 				CFFDEDFB1A95734000B25581 /* APCSetupTableViewCell.m in Sources */,
 				7B8C20141AA3AB8600BFEFDA /* APCTheme.m in Sources */,
+				A6FE21CB1C7413480031EBAD /* APCTutorialModalViewController.m in Sources */,
 				0894654E1A8C1F0200A983AC /* APCInsightBarView.m in Sources */,
 				5B9B36A81A95D9C900389F42 /* APCActivitiesBasicTableViewCell.m in Sources */,
 				F5F12A991A2F78490015982C /* APCChangeEmailViewController.m in Sources */,
