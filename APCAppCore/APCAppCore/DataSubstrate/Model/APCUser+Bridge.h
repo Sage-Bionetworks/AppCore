@@ -34,10 +34,26 @@
 #import "APCUser.h"
 #import <BridgeSDK/BridgeSDK.h>
 
+static NSString*  kAPCUserBridgeErrorDomain             = @"kAPCUserBridgeErrorDomain";
+static NSUInteger kAPCUserBridgeHaveNotVerifiedTestUser = 1;
+
 @interface APCUser (Bridge) <SBBAuthManagerDelegateProtocol>
 
 - (void) signUpOnCompletion:(void (^)(NSError * error))completionBlock;
+
 - (void) signUpWithDataGroups:(NSArray<NSString *> *)dataGroups onCompletion:(void (^)(NSError *))completionBlock;
+
+/*
+ * @param includeTestDataGroupCheck if NO, sign up will proceed as normal
+ *                                  if YES, the code will check for "+test" and add the user to the test data
+ * @param userHasAgreedToBeTestUser if YES, test data group will be added if check returns YES
+ *                                  if NO,  complete block will throw kAPCUserBridgeErrorDomain error if check returns YES
+ */
+- (void) signUpWithDataGroups:(NSArray<NSString *> *)dataGroups
+    includeTestDataGroupCheck:(BOOL)includeTestDataGroupCheck
+    userHasAgreedToBeTestUser:(BOOL)userHasAgreedToBeTestUser
+                 onCompletion:(void (^)(NSError *))completionBlock;
+
 - (void) signInOnCompletion:(void (^)(NSError * error))completionBlock;
 - (void) signOutOnCompletion:(void (^)(NSError * error))completionBlock;
 - (void) updateDataGroups:(NSArray<NSString *> *)dataGroups onCompletion:(void (^)(NSError * error))completionBlock;

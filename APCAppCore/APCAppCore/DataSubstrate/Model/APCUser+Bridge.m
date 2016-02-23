@@ -34,6 +34,9 @@
 #import "APCUser+Bridge.h"
 #import "APCAppCore.h"
 
+static NSString* const kHiddenTestEmailString = @"+test";
+static NSString* const kTestDataGroup = @"test_user";
+
 @implementation APCUser (Bridge)
 
 - (BOOL) serverDisabled
@@ -50,7 +53,16 @@
     [self signUpWithDataGroups:self.dataGroups onCompletion:completionBlock];
 }
 
-- (void)signUpWithDataGroups:(NSArray<NSString *> *)dataGroups onCompletion:(void (^)(NSError *))completionBlock
+- (void) signUpWithDataGroups:(NSArray<NSString *> *)dataGroups
+                 onCompletion:(void (^)(NSError *))completionBlock
+{
+    [self signUpWithDataGroups:dataGroups includeTestDataGroupCheck:NO userHasAgreedToBeTestUser:NO onCompletion:completionBlock];
+}
+
+- (void) signUpWithDataGroups:(NSArray<NSString *> *)dataGroups
+    includeTestDataGroupCheck:(BOOL)includeTestDataGroupCheck
+    userHasAgreedToBeTestUser:(BOOL)userHasAgreedToBeTestUser
+                 onCompletion:(void (^)(NSError *))completionBlock
 {
     if ([self serverDisabled]) {
         if (completionBlock) {
@@ -61,23 +73,46 @@
     {
         NSParameterAssert(self.email);
         NSParameterAssert(self.password);
-        [SBBComponent(SBBAuthManager) signUpWithEmail: self.email
-                                             username: self.email
-                                             password: self.password
-                                           dataGroups:dataGroups
-                                           completion: ^(NSURLSessionDataTask * __unused task,
-                                                         id __unused responseObject,
-                                                         NSError *error)
-         {
-             dispatch_async(dispatch_get_main_queue(), ^{
-                 if (!error) {
-                     APCLogEventWithData(kNetworkEvent, (@{@"event_detail":@"User Signed Up"}));
-                 }
-                 if (completionBlock) {
-                     completionBlock(error);
-                 }
-             });
-         }];
+        
+        if (includeTestDataGroupCheck &&
+            [[self.email lowercaseString] containsString:kHiddenTestEmailString])
+        {
+            // This is a hidden feature of the app where you can have users use the "+" email technique
+            // To be added as the "test_user" data group, so that their data does not contaminate real results
+            if (userHasAgreedToBeTestUser)
+            {
+                NSMutableArray* dataGroupsWithTest = [dataGroups mutableCopy];
+                [dataGroupsWithTest addObject:kTestDataGroup];
+                [self signUpWithDataGroups:dataGroupsWithTest
+                              onCompletion:completionBlock];
+            }
+            else
+            {
+                if (completionBlock) {
+                    completionBlock([NSError errorWithDomain:kAPCUserBridgeErrorDomain code:kAPCUserBridgeHaveNotVerifiedTestUser userInfo:nil]);
+                }
+            }
+        }
+        else
+        {
+            [SBBComponent(SBBAuthManager) signUpWithEmail: self.email
+                                                 username: self.email
+                                                 password: self.password
+                                               dataGroups:dataGroups
+                                               completion: ^(NSURLSessionDataTask * __unused task,
+                                                             id __unused responseObject,
+                                                             NSError *error)
+             {
+                 dispatch_async(dispatch_get_main_queue(), ^{
+                     if (!error) {
+                         APCLogEventWithData(kNetworkEvent, (@{@"event_detail":@"User Signed Up"}));
+                     }
+                     if (completionBlock) {
+                         completionBlock(error);
+                     }
+                 });
+             }];
+        }
     }
 }
 
