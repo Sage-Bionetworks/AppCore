@@ -510,7 +510,7 @@ static CGFloat const kTableViewSectionHeaderHeight = 77;
 - (void) dismiss
 {
     [self dismissViewControllerAnimated:YES completion:^{
-        if ([[NSUserDefaults standardUserDefaults] boolForKey:kShowTutorialEnabledKey]) {
+        if (!self.isFetchingFromCoreDataRightNow) {
             [self showTutorialModal];
         }
     }];
@@ -523,8 +523,6 @@ static CGFloat const kTableViewSectionHeaderHeight = 77;
                                                                                                             presentingViewController:self];
     tutorialViewController.transitioningDelegate = presentationController;
     [self presentViewController:tutorialViewController animated:YES completion:NULL];
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setBool:NO forKey:kShowTutorialEnabledKey];
 }
 
 - (void) updateBadge

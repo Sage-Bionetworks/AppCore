@@ -70,6 +70,7 @@ typedef NS_ENUM(NSInteger, OnStep) {
 - (IBAction)skipButtonTouched {
 	self.tutorialArrow.hidden = YES;
 	self.tabBarItemView.hidden = YES;
+    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:kShowTutorialEnabledKey];
 	[self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -129,6 +130,7 @@ typedef NS_ENUM(NSInteger, OnStep) {
 			tabBarController.selectedIndex = 0;
 			self.tutorialArrow.hidden = YES;
 			self.tabBarItemView.hidden = YES;
+            [[NSUserDefaults standardUserDefaults] setBool:NO forKey:kShowTutorialEnabledKey];
 			[self dismissViewControllerAnimated:YES completion:nil];
 			break;
 		default:
