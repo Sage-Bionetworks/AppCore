@@ -510,7 +510,7 @@ static CGFloat const kTableViewSectionHeaderHeight = 77;
 - (void) dismiss
 {
     [self dismissViewControllerAnimated:YES completion:^{
-        if (!self.isFetchingFromCoreDataRightNow) {
+        if (!self.isFetchingFromCoreDataRightNow && [[NSUserDefaults standardUserDefaults] boolForKey:kShowTutorialEnabledKey]) {
             [self showTutorialModal];
         }
     }];
