@@ -225,8 +225,6 @@ NSString *const kConfirmationCheckmarkColorKey  = @"ConfirmationCheckmarkColorKe
 NSString *const kTasksReminderDefaultsOnOffKey = @"TasksReminderDefaultsOnOffKey";
 NSString *const kTasksReminderDefaultsTimeKey = @"TasksReminderDefaultsTimeKey";
 
-NSString *const kShowTodayActivitiesCompleteModalEnabledKey = @"ShowTodayActivitiesCompleteModalEnabledKey";
-
 NSString *const kScheduleOffsetTaskIdKey = @"scheduleOffsetTaskIdKey";
 NSString *const kScheduleOffsetOffsetKey = @"scheduleOffsetOffsetKey";
 

@@ -243,8 +243,6 @@ FOUNDATION_EXPORT NSString *const kConfirmationCheckmarkColorKey;
 FOUNDATION_EXPORT NSString *const kTasksReminderDefaultsOnOffKey;
 FOUNDATION_EXPORT NSString *const kTasksReminderDefaultsTimeKey;
 
-FOUNDATION_EXPORT NSString *const kShowTodayActivitiesCompleteModalEnabledKey;
-
 FOUNDATION_EXPORT NSString *const kScheduleOffsetTaskIdKey;
 FOUNDATION_EXPORT NSString *const kScheduleOffsetOffsetKey;
 

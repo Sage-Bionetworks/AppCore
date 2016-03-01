@@ -48,8 +48,6 @@
 #import "UIColor+APCAppearance.h"
 #import "UIFont+APCAppearance.h"
 #import "APCLocalization.h"
-#import "APCCompletedActivitiesTodayModalViewController.h"
-#import "APCCompletedActivitiesTodayModalPresentationController.h"
 
 
 static CGFloat const kTintedCellHeight             = 65;
@@ -88,8 +86,6 @@ static NSString *const kAPCSectionSubtitleYesterday = @"Below are your incomplet
 
 @implementation APCActivitiesViewController
 
-BOOL shouldShowTodayActivitiesCompleteModal;
-NSUInteger previousCountOfRemainingTasksToday;
 
 #pragma mark - Lifecycle
 
@@ -112,18 +108,11 @@ NSUInteger previousCountOfRemainingTasksToday;
 
     // make sure we know the state of CoreMotion permissions so it's available when we need it
     [self.permissionManager requestForPermissionForType:kAPCSignUpPermissionsTypeCoremotion withCompletion:nil];
-
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    if (![defaults valueForKey:kShowTodayActivitiesCompleteModalEnabledKey]) {
-        [defaults setBool:YES forKey:kShowTodayActivitiesCompleteModalEnabledKey];
-    }
 }
 
 - (void) viewWillAppear: (BOOL) animated
 {
     [super viewWillAppear: animated];
-
-    shouldShowTodayActivitiesCompleteModal = [[NSUserDefaults standardUserDefaults] boolForKey:kShowTodayActivitiesCompleteModalEnabledKey];
 
     [self setupNotifications];
     [self setUpNavigationBarAppearance];
@@ -528,31 +517,16 @@ NSUInteger previousCountOfRemainingTasksToday;
 - (void) updateWholeUI
 {
     [self.refreshControl endRefreshing];
-    [self performSelector:@selector(dismissSpinnerController) withObject:self afterDelay:0.5];
+    [self performSelector:@selector(dismiss) withObject:self afterDelay:0.5];
     [self configureNoTasksView];
     [self updateBadge];
     [self.tableView reloadData];
+    
 }
 
-- (void) dismissSpinnerController
+- (void) dismiss
 {
-    [self dismissViewControllerAnimated:YES completion:^{
-        if (shouldShowTodayActivitiesCompleteModal && self.countOfRemainingTasksToday == 0 && previousCountOfRemainingTasksToday == 1) {
-            [self showActivitiesCompleteModal];
-        }
-    }];
-}
-
-- (void) showActivitiesCompleteModal {
-    APCCompletedActivitiesTodayModalViewController *modalViewController = [[UIStoryboard storyboardWithName:@"APCActivities" bundle:APCBundle()] instantiateViewControllerWithIdentifier:@"APCCompletedActivitiesTodayModalViewController"];
-
-    APCCompletedActivitiesTodayModalPresentationController *presentationController NS_VALID_UNTIL_END_OF_SCOPE;
-    presentationController = [[APCCompletedActivitiesTodayModalPresentationController alloc] initWithPresentedViewController:modalViewController
-                                                                                                    presentingViewController:self];
-
-    modalViewController.modalPresentationStyle = UIModalPresentationCustom;
-    modalViewController.transitioningDelegate = presentationController;
-    [self presentViewController:modalViewController animated:YES completion:NULL];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void) updateBadge
@@ -596,7 +570,6 @@ NSUInteger previousCountOfRemainingTasksToday;
 
 - (void) reloadTasksFromCoreData
 {
-    previousCountOfRemainingTasksToday = self.countOfRemainingTasksToday;
     self.isFetchingFromCoreDataRightNow = YES;
     APCSpinnerViewController *spinnerController = [[APCSpinnerViewController alloc] init];
     [self presentViewController:spinnerController animated:YES completion:nil];
