@@ -214,10 +214,7 @@ static NSString * const kAPCPleaseCheckEmailAlertOkButton = @"OK";
             APCLogError2 (error);
         }];
 
-        [self hideSpinnerUsingAnimation: YES andThenDoThis:^{
-            APCOnboardingManager *manager = [(id<APCOnboardingManagerProvider>)[UIApplication sharedApplication].delegate onboardingManager];
-            [manager onboardingDidFinishAsSignIn];
-        }];
+        [self showThankYouPage];
     }
 }
 
