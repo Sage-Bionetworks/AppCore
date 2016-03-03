@@ -55,9 +55,7 @@ static CGFloat const kTableViewSectionHeaderHeight = 77;
 static CGFloat const kActivityHeaderTitleLabelFontSize = 20.f;
 static CGFloat const kActivityHeaderSubTitleLabelFontSize = 12.f;
 static NSString *const kActivityHeaderBackgroundImage = @"Activity_Header_Background";
-static NSString *const kAPCSectionTitleKeepGoing = @"Additional Activities";
-static NSString *const kAPCSectionSubtitleKeepGoing = @"Try one of these extra activities to enhance your study experience.";
-static NSString *const kAPCSectionSubtitleYesterday = @"Below are your incomplete tasks from yesterday. For your reference only.";
+
 
 @interface APCActivitiesViewController ()
 
@@ -252,7 +250,6 @@ static NSString *const kAPCSectionSubtitleYesterday = @"Below are your incomplet
 {
     NSString *headerViewIdentifier = NSStringFromClass([APCActivitiesSectionHeaderView class]);
     APCActivitiesSectionHeaderView *headerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:headerViewIdentifier];
-    APCActivitiesViewSection *section = [self sectionForSectionNumber:sectionNumber];
 
     if (sectionNumber == 0) {
         headerView.backgroundImageView.image = [UIImage imageNamed:kActivityHeaderBackgroundImage];
@@ -277,8 +274,8 @@ static NSString *const kAPCSectionSubtitleYesterday = @"Below are your incomplet
     
     [headerView addConstraint:headerView.titleLabelTopConstraint];
     
-    headerView.titleLabel.text = [section isKeepGoingSection] ? [kAPCSectionTitleKeepGoing uppercaseString] : [section isTodaySection] ? section.title : [section.title uppercaseString];
-    headerView.subTitleLabel.text = [section isKeepGoingSection] ? kAPCSectionSubtitleKeepGoing : [section isYesterdaySection] ? kAPCSectionSubtitleYesterday : section.subtitle;
+    headerView.titleLabel.text = [self titleForHeaderInSection:sectionNumber];
+    headerView.subTitleLabel.text = [self subtitleForHeaderInSection:sectionNumber];
     
     return headerView;
 }
@@ -736,6 +733,44 @@ static NSString *const kAPCSectionSubtitleYesterday = @"Below are your incomplet
     }
 
     return activitiesTab;
+}
+
+- (NSString *)titleForHeaderInSection:(NSUInteger)sectionNumber
+{
+    APCActivitiesViewSection *section = [self sectionForSectionNumber:sectionNumber];
+    
+    if ([section isKeepGoingSection]) {
+        return [NSLocalizedStringWithDefaultValue(@"APC_ACTIVITIES_KEEP_GOING_HEADER_TITLE",
+                                                  nil,
+                                                  APCBundle(),
+                                                  @"Additional Activities",
+                                                  @"Title for 'Keep Going' section header in activities list") uppercaseString];
+    } else if ([section isTodaySection]) {
+        return section.title;
+    }
+    
+    return [section.title uppercaseString];
+}
+
+- (NSString *)subtitleForHeaderInSection:(NSUInteger)sectionNumber
+{
+    APCActivitiesViewSection *section = [self sectionForSectionNumber:sectionNumber];
+    
+    if ([section isKeepGoingSection]) {
+        return NSLocalizedStringWithDefaultValue(@"APC_ACTIVITIES_KEEP_GOING_HEADER_SUBTITLE",
+                                                 nil,
+                                                 APCBundle(),
+                                                 @"Try one of these extra activities to enhance your study experience.",
+                                                 @"Subtitle for 'Keep Going' section header in activities list");
+    } else if ([section isYesterdaySection]) {
+        return NSLocalizedStringWithDefaultValue(@"APC_ACTIVITIES_YESTERDAY_HEADER_SUBTITLE",
+                                                 nil,
+                                                 APCBundle(),
+                                                 @"Below are your incomplete tasks from yesterday. For your reference only.",
+                                                 @"Subtitle for 'Yesterday' section header in activities list");
+    }
+    
+    return section.subtitle;
 }
 
 @end
