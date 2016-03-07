@@ -469,18 +469,18 @@ static NSString * const kAPCPleaseCheckEmailAlertOkButton = @"OK";
         }
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            NSString *message, *alertActionTitle;
-            
+            NSString *localizedMessage;
+            NSString *localizedAlertActionTitle;
+
             if (error != nil) {
-                message          = @"Unable to connect to server, please check your connection";
-                alertActionTitle = @"Retry";
+                localizedMessage = NSLocalizedStringWithDefaultValue(@"Unable to connect to server, please check your connection", 
+                    @"APCAppCore", APCBundle(), @"Unable to connect to server, please check your connection", @"");
+                localizedAlertActionTitle = NSLocalizedStringWithDefaultValue(@"Retry", @"APCAppCore", APCBundle(), @"Retry", @"");
             } else {
-                message          = @"Verification email has been resent";
-                alertActionTitle = @"OK";
+                localizedMessage = NSLocalizedStringWithDefaultValue(@"Verification email has been resent",
+                    @"APCAppCore", APCBundle(), @"Verification email has been resent", @"");
+                localizedAlertActionTitle = NSLocalizedStringWithDefaultValue(@"OK", @"APCAppCore", APCBundle(), @"OK", @"");
             }
-            
-            NSString *localizedMessage          = NSLocalizedStringWithDefaultValue(message, @"APCAppCore", APCBundle(), message, @"");
-            NSString *localizedAlertActionTitle = NSLocalizedStringWithDefaultValue(alertActionTitle, @"APCAppCore", APCBundle(), alertActionTitle, @"");
             
             UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"" message:localizedMessage preferredStyle:UIAlertControllerStyleAlert];
             [alertController addAction:[UIAlertAction actionWithTitle:localizedAlertActionTitle style:UIAlertActionStyleDefault handler:nil]];
