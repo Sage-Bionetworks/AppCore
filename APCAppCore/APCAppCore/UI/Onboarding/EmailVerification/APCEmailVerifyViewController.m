@@ -132,23 +132,23 @@ static NSString * const kAPCPleaseCheckEmailAlertOkButton = @"OK";
 {
     [self.logoImageView setImage:[UIImage imageNamed:@"logo_disease"]];
     
-    [self.topMessageLabel setFont:[UIFont appRegularFontWithSize:17.0f]];
+    [self.topMessageLabel setFont:[UIFont appRegularFontWithSize:13.0f]];
     [self.topMessageLabel setTextColor:[UIColor appSecondaryColor1]];
     
-    [self.emailLabel setFont:[UIFont appMediumFontWithSize:16.0f]];
+    [self.emailLabel setFont:[UIFont appMediumFontWithSize:20.0f]];
     [self.emailLabel setAdjustsFontSizeToFitWidth:YES];
     [self.emailLabel setTextColor:[UIColor appSecondaryColor1]];
     
     [self.middleMessageLabel setFont:[UIFont appRegularFontWithSize:17.0f]];
     [self.middleMessageLabel setTextColor:[UIColor appSecondaryColor1]];
     
-    [self.bottomMessageLabel setFont:[UIFont appRegularFontWithSize:14.0f]];
+    [self.bottomMessageLabel setFont:[UIFont appRegularFontWithSize:11.0f]];
     [self.bottomMessageLabel setTextColor:[UIColor appSecondaryColor3]];
     
-    [self.changeEmailButton.titleLabel setFont:[UIFont appRegularFontWithSize:12.0f]];
+    [self.changeEmailButton.titleLabel setFont:[UIFont appRegularFontWithSize:13.0f]];
     [self.changeEmailButton setTitleColor:[UIColor appPrimaryColor] forState:UIControlStateNormal];
     
-    [self.resendEmailButton.titleLabel setFont:[UIFont appRegularFontWithSize:16.0f]];
+    [self.resendEmailButton.titleLabel setFont:[UIFont appRegularFontWithSize:13.0f]];
     [self.resendEmailButton setTitleColor:[UIColor appPrimaryColor] forState:UIControlStateNormal];
     
     CGRect screenRect = [[UIScreen mainScreen] bounds];
@@ -467,6 +467,26 @@ static NSString * const kAPCPleaseCheckEmailAlertOkButton = @"OK";
         if (error != nil) {
             APCLogError2 (error);
         }
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSString *localizedMessage;
+            NSString *localizedAlertActionTitle;
+
+            if (error != nil) {
+                localizedMessage = NSLocalizedStringWithDefaultValue(@"Unable to connect to server, please check your connection", 
+                    @"APCAppCore", APCBundle(), @"Unable to connect to server, please check your connection", @"");
+                localizedAlertActionTitle = NSLocalizedStringWithDefaultValue(@"Retry", @"APCAppCore", APCBundle(), @"Retry", @"");
+            } else {
+                localizedMessage = NSLocalizedStringWithDefaultValue(@"Verification email has been resent",
+                    @"APCAppCore", APCBundle(), @"Verification email has been resent", @"");
+                localizedAlertActionTitle = NSLocalizedStringWithDefaultValue(@"OK", @"APCAppCore", APCBundle(), @"OK", @"");
+            }
+            
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"" message:localizedMessage preferredStyle:UIAlertControllerStyleAlert];
+            [alertController addAction:[UIAlertAction actionWithTitle:localizedAlertActionTitle style:UIAlertActionStyleDefault handler:nil]];
+            
+            [self presentViewController:alertController animated:YES completion:nil];
+        });
      }];
 }
 
