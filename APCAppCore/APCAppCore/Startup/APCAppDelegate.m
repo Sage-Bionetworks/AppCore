@@ -210,16 +210,40 @@ static NSString*    const kAppWillEnterForegroundTimeKey    = @"APCWillEnterFore
     [[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:kAppWillEnterForegroundTimeKey];
 #ifndef DEVELOPMENT
     if (self.dataSubstrate.currentUser.signedIn) {
-        [SBBComponent(SBBAuthManager) ensureSignedInWithCompletion: ^(NSURLSessionDataTask * __unused task,
-																	  id  __unused responseObject,
-																	  NSError *error) {
-            APCLogError2 (error);
-        }];
+        if (self.dataSubstrate.currentUser.isConsented) {
+            [SBBComponent(SBBAuthManager) ensureSignedInWithCompletion: ^(NSURLSessionDataTask * __unused task,
+                                                                          id  __unused responseObject,
+                                                                          NSError *error) {
+                APCLogError2 (error);
+                
+                if (error.code == SBBErrorCodeUnsupportedAppVersion) {
+                    [self handleUnsupportedAppVersionError:error networkManager:nil];
+                }
+                else if (error.code == SBBErrorCodeServerPreconditionNotMet) {
+                    self.dataSubstrate.currentUser.userConsented = NO;
+                    self.dataSubstrate.currentUser.consented = NO;
+                    [self showReconsentIfNecessary];
+                }
+            }];
+        }
+        else {
+            [self showReconsentIfNecessary];
+        }
     }
 #endif
     
     [self hideSecureView];
     [self.dataMonitor appBecameActive];
+}
+
+- (void)showReconsentIfNecessary {
+    if (self.tabBarController == self.window.rootViewController) {
+        APCActivitiesViewController *activitiesVC = (APCActivitiesViewController *)[self.tabBarController.viewControllers firstObject];
+        if ([activitiesVC isKindOfClass:[APCActivitiesViewController class]]) {
+            [self.tabBarController setSelectedIndex:0];
+            [activitiesVC showReconsentIfNecessary];
+        }
+    }
 }
 
 - (void)application:(UIApplication *) __unused application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
@@ -728,7 +752,6 @@ static NSString*    const kAppWillEnterForegroundTimeKey    = @"APCWillEnterFore
     self.dataSubstrate.currentUser.signedIn = NO;
     [APCKeychainStore removeValueForKey:kPasswordKey];
     [self.tasksReminder updateTasksReminder];
-    [self showOnBoarding];
 }
 
 - (void) withdrawStudy: (NSNotification *) __unused notification
@@ -737,7 +760,6 @@ static NSString*    const kAppWillEnterForegroundTimeKey    = @"APCWillEnterFore
     [APCKeychainStore resetKeyChain];
     [self.dataSubstrate resetCoreData];
     [self.tasksReminder updateTasksReminder];
-    [self showOnBoarding];
 }
 
 - (void)newsFeedUpdated:(NSNotification *)__unused notification
@@ -1002,15 +1024,12 @@ static NSString*    const kAppWillEnterForegroundTimeKey    = @"APCWillEnterFore
 {
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:viewController];
     navController.navigationBar.translucent = NO;
-    [self transitionToRootViewController:viewController];
-}
 
-- (void) transitionToRootViewController:(UIViewController*) viewController {
     [UIView transitionWithView:self.window
                       duration:0.6
                        options:UIViewAnimationOptionTransitionNone
                     animations:^{
-                        self.window.rootViewController = viewController;
+                        self.window.rootViewController = navController;
                     }
                     completion:nil];
 }

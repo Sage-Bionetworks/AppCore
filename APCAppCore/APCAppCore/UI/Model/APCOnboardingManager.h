@@ -70,6 +70,11 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (BOOL)didHandleSignupFromViewController:(UIViewController*)viewController;
 
+/**
+ * Allow for a custom handling of onboarding
+ */
+- (BOOL)didHandleSignInFromViewController:(UIViewController*)viewController;
+
 @end
 
 /**
@@ -124,6 +129,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 /** Kept for compatibility reason; no matter the receiver's onboarding type, this will finish onboarding as a user-sign-in. */
 - (void)onboardingDidFinishAsSignIn;
+
+- (BOOL)checkForConsentWithTaskViewController:(ORKTaskViewController *)taskViewController;
 
 @end
 

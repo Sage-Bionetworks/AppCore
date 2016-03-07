@@ -36,6 +36,7 @@
 #import "APCEmailVerifyViewController.h"
 #import "APCOnboardingManager.h"
 #import "APCLog.h"
+#import "APCContainerStepViewController.h"
 
 #import "UIColor+APCAppearance.h"
 #import "UIFont+APCAppearance.h"
@@ -45,6 +46,8 @@ static NSString * const kServerInvalidEmailErrorString = @"Invalid username or p
 
 @interface APCSignInViewController () <ORKTaskViewControllerDelegate>
 
+@property (nonatomic, readonly) APCContainerStepViewController *parentStepViewController;
+
 @end
 
 @implementation APCSignInViewController
@@ -52,6 +55,13 @@ static NSString * const kServerInvalidEmailErrorString = @"Invalid username or p
 - (void)dealloc {
     _userHandleTextField.delegate = nil;
     _passwordTextField.delegate = nil;
+}
+
+- (APCContainerStepViewController *)parentStepViewController {
+    if ([self.parentViewController isKindOfClass:[APCContainerStepViewController class]]) {
+        return (APCContainerStepViewController*)self.parentViewController;
+    }
+    return nil;
 }
 
 #pragma mark - Life Cycle
@@ -142,8 +152,12 @@ static NSString * const kServerInvalidEmailErrorString = @"Invalid username or p
     return [(id<APCOnboardingManagerProvider>)[UIApplication sharedApplication].delegate onboardingManager].user;
 }
 
+- (APCOnboardingManager *)onboardingManager {
+    return [(id<APCOnboardingManagerProvider>)[UIApplication sharedApplication].delegate onboardingManager];
+}
+
 - (APCOnboarding *)onboarding {
-    return [(id<APCOnboardingManagerProvider>)[UIApplication sharedApplication].delegate onboardingManager].onboarding;
+    return [self onboardingManager].onboarding;
 }
 
 - (void)back
@@ -225,10 +239,14 @@ static NSString * const kServerInvalidEmailErrorString = @"Invalid username or p
         APCLogError2 (error);
     }];
     
-    if (user.isSecondaryInfoSaved) {
+    if (self.parentStepViewController != nil) {
+        [self.parentStepViewController goForward];
+    }
+    else if (user.isSecondaryInfoSaved) {
         user.signedIn = YES;
         [[NSNotificationCenter defaultCenter] postNotificationName:APCUserSignedInNotification object:self];
-    } else{
+    }
+    else {
         UIViewController *viewController = [[self onboarding] nextScene];
         [self.navigationController pushViewController:viewController animated:YES];
     }
@@ -240,11 +258,11 @@ static NSString * const kServerInvalidEmailErrorString = @"Invalid username or p
     ORKTaskViewController *consentViewController = [((APCAppDelegate*)[UIApplication sharedApplication].delegate) consentViewController];
     consentViewController.delegate = self;
     
-    NSUInteger subviewsCount = consentViewController.view.subviews.count;
-    UILabel *watermarkLabel = [APCExampleLabel watermarkInRect:consentViewController.view.bounds
-                                                    withCenter:consentViewController.view.center];
-    
-    [consentViewController.view insertSubview:watermarkLabel atIndex:subviewsCount];
+//    NSUInteger subviewsCount = consentViewController.view.subviews.count;
+//    UILabel *watermarkLabel = [APCExampleLabel watermarkInRect:consentViewController.view.bounds
+//                                                    withCenter:consentViewController.view.center];
+//    
+//    [consentViewController.view insertSubview:watermarkLabel atIndex:subviewsCount];
     
     [self.navigationController presentViewController:consentViewController animated:YES completion:nil];
 }
@@ -329,87 +347,14 @@ static NSString * const kServerInvalidEmailErrorString = @"Invalid username or p
 
 - (void)taskViewControllerDidComplete: (ORKTaskViewController *)taskViewController
 {
-    ORKConsentSignatureResult *consentResult =  nil;
-    
-    if ([taskViewController respondsToSelector:@selector(signatureResult)])
-    {
-        APCConsentTaskViewController *consentTaskViewController = (APCConsentTaskViewController *)taskViewController;
-        if (consentTaskViewController.signatureResult)
-        {
-            consentResult = consentTaskViewController.signatureResult;
-        }
-    }
-    else
-    {
-        NSString*   signatureResultStepIdentifier = @"reviewStep";
-        
-        for (ORKStepResult* result in taskViewController.result.results)
-        {
-            if ([result.identifier isEqualToString:signatureResultStepIdentifier])
-            {
-                consentResult = (ORKConsentSignatureResult*)[[result results] firstObject];
-                break;
-            }
-        }
-        
-        NSAssert(consentResult != nil, @"Unable to find consent result with signature (identifier == \"%@\"", signatureResultStepIdentifier);
-    }
-    
-    if (consentResult.signature.requiresName && (consentResult.signature.givenName && consentResult.signature.familyName))
-    {
-        APCUser *user = [self user];
-        user.consentSignatureName = [consentResult.signature.givenName stringByAppendingFormat:@" %@",consentResult.signature.familyName];
-        user.consentSignatureImage = UIImagePNGRepresentation(consentResult.signature.signatureImage);
-        
-        NSDateFormatter *dateFormatter = [NSDateFormatter new];
-        dateFormatter.dateFormat = consentResult.signature.signatureDateFormatString;
-        user.consentSignatureDate = [dateFormatter dateFromString:consentResult.signature.signatureDate];
-        
-        // extract the user's sharing choice
-        APCConsentTask *task = taskViewController.task;
-        ORKConsentSharingStep *sharingStep = task.sharingStep;
-        APCUserConsentSharingScope sharingScope = APCUserConsentSharingScopeNone;
-        
-        for (ORKStepResult* result in taskViewController.result.results) {
-            if ([result.identifier isEqualToString:sharingStep.identifier]) {
-                for (ORKChoiceQuestionResult *choice in result.results) {
-                    if ([choice isKindOfClass:[ORKChoiceQuestionResult class]]) {
-                        NSNumber *answer = [choice.choiceAnswers firstObject];
-                        if ([answer isKindOfClass:[NSNumber class]]) {
-                            if (0 == answer.integerValue) {
-                                sharingScope = APCUserConsentSharingScopeStudy;
-                            }
-                            else if (1 == answer.integerValue) {
-                                sharingScope = APCUserConsentSharingScopeAll;
-                            }
-                            else {
-                                APCLogDebug(@"Unknown sharing choice answer: %@", answer);
-                            }
-                        }
-                        else {
-                            APCLogDebug(@"Unknown sharing choice answer(s): %@", choice.choiceAnswers);
-                        }
-                    }
-                }
-                break;
-            }
-        }
-        
-        user.sharingScope = sharingScope;
-        
-        [self dismissViewControllerAnimated:YES completion:^
-         {
-             [((APCAppDelegate*)[UIApplication sharedApplication].delegate) dataSubstrate].currentUser.userConsented = YES;
-             
+    if ([[self onboardingManager] checkForConsentWithTaskViewController:taskViewController]) {
+        [self dismissViewControllerAnimated:YES completion:^{
              [self sendConsent];
          }];
     }
     else
     {
-        [taskViewController dismissViewControllerAnimated:YES completion:^
-         {
-             [[NSNotificationCenter defaultCenter] postNotificationName:APCUserDidDeclineConsentNotification object:nil];
-         }];
+        [taskViewController dismissViewControllerAnimated:YES completion:nil];
     }
 }
 

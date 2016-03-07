@@ -100,7 +100,8 @@ static NSString *kConsentEmailSubject = @"Consent Document";
 }
 
 - (void)goBackToSignUpJoin:(NSNotification *)__unused notification {
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    BOOL animated = (self.presentedViewController == nil);
+    [self.navigationController popToRootViewControllerAnimated:animated];
 }
 
 - (NSArray *)prepareContent
@@ -354,11 +355,20 @@ static NSString *kConsentEmailSubject = @"Consent Document";
 }
 
 - (void)signInTapped:(id)__unused sender {
-    APCOnboardingManager *manager = [(id<APCOnboardingManagerProvider>)[UIApplication sharedApplication].delegate onboardingManager];
+    
+    id <APCOnboardingManagerProvider> provider = (id<APCOnboardingManagerProvider>)[UIApplication sharedApplication].delegate;
+    if ([provider respondsToSelector:@selector(didHandleSignInFromViewController:)] &&
+        [provider didHandleSignInFromViewController:self]) {
+        // If the custom handling is implemented then nothing else is required.
+        return; // Exit
+    }
+    
+    APCOnboardingManager *manager = [provider onboardingManager];
     [manager instantiateOnboardingForType:kAPCOnboardingTaskTypeSignIn];
     
     UIViewController *viewController = [manager.onboarding nextScene];
     NSAssert(viewController, @"Expecting the first scene's view controller for sign-in onboarding but got nothing");
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
     [self.navigationController pushViewController:viewController animated:YES];
 }
 
@@ -376,6 +386,7 @@ static NSString *kConsentEmailSubject = @"Consent Document";
     
     UIViewController *viewController = [manager.onboarding nextScene];
     NSAssert(viewController, @"Expecting the first scene's view controller for sign-up onboarding but got nothing");
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
     [self.navigationController pushViewController:viewController animated:YES];
 }
 
