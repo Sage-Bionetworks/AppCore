@@ -263,6 +263,11 @@ FOUNDATION_EXPORT NSString *const kActivitiesQueryKeyYesterday;
 
 FOUNDATION_EXPORT NSString *const kActivitiesRequiresMotionSensor;
 
+FOUNDATION_EXPORT NSString *const kShowTutorialEnabledKey;
+FOUNDATION_EXPORT NSString *const kTutorialTextInitial;
+FOUNDATION_EXPORT NSString *const kTutorialTextActivites;
+FOUNDATION_EXPORT NSString *const kTutorialTextDashboard;
+
 
 
 // ---------------------------------------------------------

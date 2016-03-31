@@ -36,7 +36,7 @@
 
 @interface APCPermissionPrimingViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet UIImageView *headerImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *healthKitImageView;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *detailTextLabel;
 @property (weak, nonatomic) IBOutlet APCButton *nextButton;

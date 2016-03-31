@@ -63,8 +63,10 @@
     
     self.detailTextLabel.font = [UIFont appRegularFontWithSize:16.0f];
     self.detailTextLabel.textColor = [UIColor appSecondaryColor1];
-    
-    self.headerImageView.image = [UIImage imageNamed:@"switch_icon"];
+
+    self.healthKitImageView.image = [UIImage imageNamed:@"health_app_icon"
+                                               inBundle:[NSBundle bundleForClass:[self class]]
+                          compatibleWithTraitCollection:nil];
 }
 
 - (void)setupNavAppearance {
