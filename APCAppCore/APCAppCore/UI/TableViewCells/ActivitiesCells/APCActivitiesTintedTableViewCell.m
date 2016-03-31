@@ -43,6 +43,8 @@
 NSString * const kAPCActivitiesTintedTableViewCellIdentifier = @"APCActivitiesTintedTableViewCell";
 
 static CGFloat const kTitleLabelCenterYConstant = 10.5f;
+static CGFloat const ktitleLabelLeadingConstraintToday = 36;
+static CGFloat const ktitleLabelLeadingConstraintGeneral = 8;
 
 @interface APCActivitiesTintedTableViewCell ()
 @property (nonatomic, weak)   IBOutlet  UILabel            *subTitleLabel;
@@ -91,7 +93,9 @@ static CGFloat const kTitleLabelCenterYConstant = 10.5f;
 
     self.taskGroup                  = taskGroup;
     self.titleLabel.text            = taskGroup.task.taskTitle;
-    self.titleLabel.textColor       = (cellRepresentsToday || isOptionalTask) ? [UIColor appSecondaryColor1] : [UIColor appSecondaryColor3];
+    self.titleLabel.textColor       = (cellRepresentsToday && !taskGroup.isFullyCompleted) || taskGroup.task.taskIsOptional.boolValue ?
+        [UIColor appSecondaryColor1] : [UIColor appSecondaryColor3];
+
     self.subTitleLabel.textColor    = [UIColor appSecondaryColor3];
     self.titleLabel.font            = [UIFont appRegularFontWithSize: kAPCActivitiesNormalFontSize];
     self.subTitleLabel.font         = [UIFont appRegularFontWithSize: kAPCActivitiesSmallFontSize];
@@ -124,6 +128,14 @@ static CGFloat const kTitleLabelCenterYConstant = 10.5f;
     self.confirmationView.completed = ! isOptionalTask && taskGroup.isFullyCompleted;
     self.confirmationView.hidden    = isOptionalTask;
 
+    if (cellRepresentsToday) {
+        self.confirmationView.completedBackgroundColor = [UIColor appConfirmationCheckmarkColor];
+        self.confirmationView.hidden = NO;
+
+        self.countLabel.hidden = self.cyclesRemainingLabel.hidden = !(taskGroup.totalRequiredTasksForThisTimeRange > 1 && !taskGroup.isFullyCompleted);
+    } else {
+        self.confirmationView.hidden = self.countLabel.hidden = self.cyclesRemainingLabel.hidden = YES;
+    }
 
 
     //
@@ -172,43 +184,17 @@ static CGFloat const kTitleLabelCenterYConstant = 10.5f;
     //
 
     [self setNeedsDisplay];
-}
 
-- (void)drawRect:(CGRect)rect
-{
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    CGFloat borderWidth = 0.25;
-    
-    UIColor *borderColor = [UIColor appBorderLineColor];
-    
-    // Top border
-    CGContextSaveGState(context);
-    CGContextSetLineCap(context, kCGLineCapSquare);
-    CGContextSetStrokeColorWithColor(context, borderColor.CGColor);
-    CGContextSetLineWidth(context, borderWidth);
-    CGContextMoveToPoint(context, 0, 0);
-    CGContextAddLineToPoint(context, rect.size.width, 0);
-    CGContextStrokePath(context);
-    CGContextRestoreGState(context);
-    
-    // Bottom border
-    CGContextSaveGState(context);
-    CGContextSetLineCap(context, kCGLineCapSquare);
-    CGContextSetStrokeColorWithColor(context, borderColor.CGColor);
-    CGContextSetLineWidth(context, borderWidth);
-    CGContextMoveToPoint(context, 0, rect.size.height);
-    CGContextAddLineToPoint(context, rect.size.width, rect.size.height);
-    CGContextStrokePath(context);
-    CGContextRestoreGState(context);
-    
-    // Sidebar
-    CGFloat sidebarWidth = 4.0;
-    CGFloat sidbarHeight = rect.size.height;
-    CGRect sidebar = CGRectMake(0, 0, sidebarWidth, sidbarHeight);
-    
-    UIColor *sidebarColor = self.tintColor;
-    [sidebarColor setFill];
-    UIRectFill(sidebar);
+    [self removeConstraint:self.titleLabelLeadingConstraint];
+    self.titleLabelLeadingConstraint = [NSLayoutConstraint constraintWithItem:self.titleLabel
+                                                                    attribute:NSLayoutAttributeLeading
+                                                                    relatedBy:NSLayoutRelationEqual
+                                                                       toItem:self
+                                                                    attribute:NSLayoutAttributeLeadingMargin
+                                                                   multiplier:1
+                                                                     constant:cellRepresentsToday ? ktitleLabelLeadingConstraintToday : ktitleLabelLeadingConstraintGeneral];
+
+    [self addConstraint:self.titleLabelLeadingConstraint];
 }
 
 @end

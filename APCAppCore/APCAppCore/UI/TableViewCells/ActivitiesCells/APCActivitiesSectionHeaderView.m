@@ -30,31 +30,56 @@
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE 
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
 // 
- 
+
 #import "APCActivitiesSectionHeaderView.h"
 #import "UIColor+APCAppearance.h"
 #import "UIFont+APCAppearance.h"
 
 NSString * const kAPCActivitiesSectionHeaderViewIdentifier = @"APCActivitiesSectionHeaderView";
+void *BackgroundImageContext = &BackgroundImageContext;
 
 @implementation APCActivitiesSectionHeaderView
 
 - (void)awakeFromNib
 {
     [super awakeFromNib];
-    
+
     [self setupAppearance];
 }
 
 - (void)setupAppearance
 {
+    [self.backgroundImageView addObserver:self
+                               forKeyPath:@"image"
+                                  options:NSKeyValueObservingOptionNew
+                                  context:BackgroundImageContext];
+
     self.titleLabel.textColor = [UIColor appSecondaryColor2];
-    self.titleLabel.font = [UIFont appRegularFontWithSize:16.f];
-    
+
     self.subTitleLabel.textColor = [UIColor appSecondaryColor2];
     self.subTitleLabel.font = [UIFont appRegularFontWithSize:14.f];
-    
+
     self.contentView.backgroundColor = [UIColor colorWithWhite:248/255.0 alpha:1.0];
+
+    if (self.backgroundImageView.image != nil) {
+        self.titleLabel.textColor = [UIColor whiteColor];
+        self.subTitleLabel.textColor = [UIColor whiteColor];
+        self.titleLabel.font = [UIFont appLightFontWithSize:20.f];
+        self.subTitleLabel.font = [UIFont boldSystemFontOfSize:12.f];
+    } else {
+        self.titleLabel.font = [UIFont boldSystemFontOfSize:14.f];
+    }
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    if (context == BackgroundImageContext) {
+        [self setupAppearance];
+    } else {
+        [super observeValueForKeyPath:keyPath
+                             ofObject:object
+                               change:change
+                              context:context];
+    }
 }
 
 @end

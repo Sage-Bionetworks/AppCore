@@ -41,4 +41,8 @@ FOUNDATION_EXPORT NSString * const kAPCActivitiesSectionHeaderViewIdentifier;
 
 @property (weak, nonatomic) IBOutlet UILabel *subTitleLabel;
 
+@property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *titleLabelTopConstraint;
+
 @end

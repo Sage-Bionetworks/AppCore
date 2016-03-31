@@ -18,7 +18,7 @@
                         <animations/>
                     </navigationBar>
                     <connections>
-                        <segue destination="MFJ-Oa-hlb" kind="relationship" relationship="rootViewController" id="Sf4-81-s1l"/>
+                        <segue destination="nAL-YM-dWv" kind="relationship" relationship="rootViewController" id="BoZ-17-o80"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0qL-ce-F7H" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -57,10 +57,10 @@ to show at this time.
                                 <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="APCActivitiesTintedTableViewCell" rowHeight="65" id="hT2-NM-tlq" customClass="APCActivitiesTintedTableViewCell">
-                                        <rect key="frame" x="0.0" y="50" width="600" height="65"/>
+                                        <rect key="frame" x="0.0" y="50" width="592" height="65"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hT2-NM-tlq" id="hy7-eG-vzT">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="65"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="592" height="65"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view tag="100" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jxk-nd-Tkf" customClass="APCConfirmationView">
@@ -130,10 +130,10 @@ to show at this time.
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="APCActivitiesBasicTableViewCell" rowHeight="50" id="ROz-sG-beV" customClass="APCActivitiesBasicTableViewCell">
-                                        <rect key="frame" x="0.0" y="115" width="600" height="50"/>
+                                        <rect key="frame" x="0.0" y="115" width="592" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ROz-sG-beV" id="roD-6Q-lt7">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="592" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view tag="100" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tcJ-kx-8kT" customClass="APCConfirmationView">
@@ -179,8 +179,8 @@ to show at this time.
                                     <outlet property="delegate" destination="i33-e8-YXy" id="fFl-jz-wh7"/>
                                 </connections>
                             </tableView>
-                            <view clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ydv-kD-FYe" userLabel="date-range debugger">
-                                <rect key="frame" x="0.0" y="437" width="600" height="163"/>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ydv-kD-FYe" userLabel="date-range debugger">
+                                <rect key="frame" x="4" y="437" width="592" height="163"/>
                                 <subviews>
                                     <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="4/5/6" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="27k-7C-Ode">
                                         <rect key="frame" x="313" y="39" width="279" height="21"/>
@@ -365,12 +365,12 @@ to show at this time.
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="804" y="950"/>
+            <point key="canvasLocation" x="804" y="1144"/>
         </scene>
         <!--Activities View Controller-->
         <scene sceneID="pQA-KV-V7s">
             <objects>
-                <viewController restorationIdentifier="APCActivityVC" storyboardIdentifier="ActivitiesViewWithoutDebugPanel" id="MFJ-Oa-hlb" customClass="APCActivitiesViewController" sceneMemberID="viewController">
+                <viewController restorationIdentifier="APCActivityVC" storyboardIdentifier="ActivitiesViewWithoutDebugPanelOld" id="MFJ-Oa-hlb" customClass="APCActivitiesViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="uVJ-2f-VjQ"/>
                         <viewControllerLayoutGuide type="bottom" id="uXM-vz-msz"/>
@@ -548,7 +548,7 @@ to show at this time.
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="804" y="247"/>
+            <point key="canvasLocation" x="804" y="464"/>
         </scene>
     </scenes>
 </document>

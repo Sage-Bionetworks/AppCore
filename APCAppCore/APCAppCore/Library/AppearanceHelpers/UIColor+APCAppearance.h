@@ -55,6 +55,7 @@
 
 + (UIColor *) appBorderLineColor;
 + (UIColor *) appPrimaryNavBarColor;
++ (UIColor *) appConfirmationCheckmarkColor;
 
 + (UIColor *)tertiaryColorForString:(NSString *)colorName;
 

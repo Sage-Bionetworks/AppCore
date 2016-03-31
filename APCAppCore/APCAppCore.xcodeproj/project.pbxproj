@@ -305,6 +305,9 @@
 		80A98DDA1BFD4A290060146F /* APCPasscode.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80A98DDC1BFD4A290060146F /* APCPasscode.storyboard */; };
 		80A98DDD1BFD517C0060146F /* APCLocalization.h in Headers */ = {isa = PBXBuildFile; fileRef = 80A98DB01BFCFE430060146F /* APCLocalization.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		80F856641C57EB3200AB321C /* ResearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80F856631C57EB3200AB321C /* ResearchKit.framework */; };
+		A61315811C6BB77A00A4C0AD /* health_app_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A613157F1C6BB77A00A4C0AD /* health_app_icon@2x.png */; };
+		A61315821C6BB77A00A4C0AD /* health_app_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A61315801C6BB77A00A4C0AD /* health_app_icon@3x.png */; };
+		A63E241F1C6E665900E7B537 /* APCActivitiesSectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A63E241E1C6E665900E7B537 /* APCActivitiesSectionHeaderView.xib */; };
 		A7CFE4B51A8B05F4009A171C /* APCStudyOverviewCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = A7CFE4B11A8B05F4009A171C /* APCStudyOverviewCollectionViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A7CFE4B61A8B05F4009A171C /* APCStudyOverviewCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A7CFE4B21A8B05F4009A171C /* APCStudyOverviewCollectionViewCell.m */; };
 		A7CFE4B71A8B05F4009A171C /* APCStudyOverviewCollectionViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = A7CFE4B31A8B05F4009A171C /* APCStudyOverviewCollectionViewController.h */; };
@@ -1058,6 +1061,9 @@
 		80A98DE41BFD56D70060146F /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/APCProfile.strings; sourceTree = "<group>"; };
 		80A98DE51BFD56D70060146F /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/APCPasscode.strings; sourceTree = "<group>"; };
 		80F856631C57EB3200AB321C /* ResearchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ResearchKit.framework; path = "../../researchkit/build/Debug-iphoneos/ResearchKit.framework"; sourceTree = "<group>"; };
+		A613157F1C6BB77A00A4C0AD /* health_app_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "health_app_icon@2x.png"; sourceTree = "<group>"; };
+		A61315801C6BB77A00A4C0AD /* health_app_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "health_app_icon@3x.png"; sourceTree = "<group>"; };
+		A63E241E1C6E665900E7B537 /* APCActivitiesSectionHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = APCActivitiesSectionHeaderView.xib; sourceTree = "<group>"; };
 		A7CFE4B11A8B05F4009A171C /* APCStudyOverviewCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APCStudyOverviewCollectionViewCell.h; sourceTree = "<group>"; };
 		A7CFE4B21A8B05F4009A171C /* APCStudyOverviewCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APCStudyOverviewCollectionViewCell.m; sourceTree = "<group>"; };
 		A7CFE4B31A8B05F4009A171C /* APCStudyOverviewCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APCStudyOverviewCollectionViewController.h; sourceTree = "<group>"; };
@@ -2003,6 +2009,15 @@
 				80A98DB51BFD11580060146F /* APCLocalization.m */,
 			);
 			name = Localization;
+			sourceTree = "<group>";
+		};
+		A613157C1C6BB30800A4C0AD /* what-to-expect */ = {
+			isa = PBXGroup;
+			children = (
+				A613157F1C6BB77A00A4C0AD /* health_app_icon@2x.png */,
+				A61315801C6BB77A00A4C0AD /* health_app_icon@3x.png */,
+			);
+			name = "what-to-expect";
 			sourceTree = "<group>";
 		};
 		CB1B241F1C57FE5A009DD367 /* Reminder Tests */ = {

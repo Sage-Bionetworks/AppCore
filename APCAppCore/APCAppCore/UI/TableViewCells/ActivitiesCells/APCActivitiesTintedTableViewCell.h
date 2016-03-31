@@ -50,6 +50,9 @@ FOUNDATION_EXPORT NSString * const kAPCActivitiesTintedTableViewCellIdentifier;
  */
 @interface APCActivitiesTintedTableViewCell : APCActivitiesTableViewCell
 
+@property(weak, nonatomic) IBOutlet UILabel *cyclesRemainingLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *titleLabelLeadingConstraint;
+
 /**
  Configure this cell to display its TaskGroup:  a single
  conceptual activity the user can perform, with various
