@@ -1739,9 +1739,15 @@ static NSString * const kAPCRightDetailTableViewCellIdentifier = @"APCRightDetai
 
 - (void)showPrivacyPolicy
 {
+    // set our URL to access hosted page to start. if we do NOT have reachability to the hosted version, use local instead
+    NSURL *targetURL = [[NSBundle mainBundle] privacyPolicyURL];
+    SBBNetworkManager *networkManager = [[SBBNetworkManager alloc] initWithBaseURL:targetURL.absoluteString];
+    if (!networkManager.isServerReachable) {
+        NSString *localUrlString = [[APCAppDelegate sharedAppDelegate] pathForResource: @"PrivacyPolicy" ofType:@"html"];
+        targetURL = [NSURL URLWithString:localUrlString];
+    }
+    
     APCWebViewController *webViewController = [[UIStoryboard storyboardWithName:@"APCOnboarding" bundle:[NSBundle appleCoreBundle]] instantiateViewControllerWithIdentifier:@"APCWebViewController"];
-    NSString *filePath = [[APCAppDelegate sharedAppDelegate] pathForResource: @"PrivacyPolicy" ofType:@"html"];
-    NSURL *targetURL = [NSURL URLWithString:filePath];
     NSURLRequest *request = [NSURLRequest requestWithURL:targetURL];
     webViewController.title = NSLocalizedStringWithDefaultValue(@"Privacy Policy", @"APCAppCore", APCBundle(), @"Privacy Policy", @"");
     
