@@ -696,6 +696,13 @@ static NSString* const kBaseEmailAddressForExternalIdKey = @"baseEmailAddressFor
 #pragma mark - Authmanager Delegate Protocol
 /*********************************************************************************/
 
+- (void)authManager:(nullable id<SBBAuthManagerProtocol>)authManager didGetSessionToken:(nullable NSString *)sessionToken forEmail:(nullable NSString *)email andPassword:(nullable NSString *)password
+{
+    self.sessionToken = sessionToken;
+    self.email = email;
+    self.password = password;
+}
+
 - (NSString *)sessionTokenForAuthManager:(id<SBBAuthManagerProtocol>) __unused authManager
 {
     return self.sessionToken;

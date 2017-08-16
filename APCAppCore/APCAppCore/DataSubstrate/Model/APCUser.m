@@ -353,7 +353,9 @@ static NSString *const kSignedInKey = @"SignedIn";
         return guid;
     } else {
         NSLog(@"No subpopulationGuid found for user, returning study identifier instead");
-        return gSBBAppStudy;
+        APCAppDelegate * appDelegate = (APCAppDelegate*) UIApplication.sharedApplication.delegate;
+        NSString * studyIdentifier = appDelegate.dataSubstrate.studyIdentifier;
+        return studyIdentifier;
     }
 }
 

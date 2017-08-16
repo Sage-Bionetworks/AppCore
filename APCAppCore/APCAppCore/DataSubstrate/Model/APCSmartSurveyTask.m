@@ -194,7 +194,10 @@ static APCDummyObject * _dummyObject;
 
 - (ORKTaskProgress)progressOfCurrentStep:(ORKStep *)step withResult:(ORKTaskResult *) __unused result
 {
-    return ORKTaskProgressMake([self.staticStepIdentifiers indexOfObject: step.identifier], self.staticStepIdentifiers.count);
+    ORKTaskProgress progress;
+    progress.current = [self.staticStepIdentifiers indexOfObject: step.identifier];
+    progress.total = self.staticStepIdentifiers.count;
+    return progress;
 }
 
 /*********************************************************************************/

@@ -457,7 +457,10 @@ static NSString*    kStepIdentifierSuffixStart          = @"+X";
 
 - (ORKTaskProgress)progressOfCurrentStep:(ORKStep*) __unused step withResult:(ORKTaskResult*) __unused result
 {
-    return ORKTaskProgressMake(0, 0);
+    ORKTaskProgress progress;
+    progress.current = 0;
+    progress.total = 0;
+    return progress;
 }
 
 #pragma mark Loading consent from JSON

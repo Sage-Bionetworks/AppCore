@@ -52,7 +52,7 @@
 @property (assign) BOOL justJoined;
 @property (strong, nonatomic) NSString *logDirectory;
 @property (nonatomic, strong) APCUser *currentUser;
-
+@property (nonatomic, strong) NSString *studyIdentifier;
 
 #pragma mark - CoreData
 

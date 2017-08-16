@@ -749,6 +749,30 @@
 		FFFA23A91C20A4D800727DA8 /* FilenameTranslation_test.json in Resources */ = {isa = PBXBuildFile; fileRef = FFFA23A81C20A4D800727DA8 /* FilenameTranslation_test.json */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		04B953C41F44ACB800074ABF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 04B953BD1F44ACB800074ABF /* openssl.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 60674AE31B30A93900A1917D;
+			remoteInfo = openssl;
+		};
+		04B953C61F44ACB800074ABF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 04B953BD1F44ACB800074ABF /* openssl.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 60674AEE1B30A93900A1917D;
+			remoteInfo = opensslTests;
+		};
+		04B953C81F44ACB800074ABF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 04B953BD1F44ACB800074ABF /* openssl.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 80B2C4A11E3AAC25001F9FEA;
+			remoteInfo = "OpenSSL (iOS Static Library)";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		031C95FA1E491B1D00DD34FE /* APCReferralCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APCReferralCodeViewController.h; sourceTree = "<group>"; };
 		031C95FB1E491B1D00DD34FE /* APCReferralCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APCReferralCodeViewController.m; sourceTree = "<group>"; };
@@ -760,6 +784,7 @@
 		0494397F1B8FC04000CAE23C /* APCDownloadDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APCDownloadDataViewController.h; sourceTree = "<group>"; };
 		049439801B8FC04000CAE23C /* APCDownloadDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = APCDownloadDataViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		049E4CC31BE1829900E45E4D /* APCModel 9.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "APCModel 9.xcdatamodel"; sourceTree = "<group>"; };
+		04B953BD1F44ACB800074ABF /* openssl.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openssl.xcodeproj; path = ../../CMSSupport/openssl/openssl.xcodeproj; sourceTree = "<group>"; };
 		04FB64451BB4883900D0A50D /* APCTaskImporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APCTaskImporter.h; sourceTree = "<group>"; };
 		04FB64461BB4883900D0A50D /* APCTaskImporter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APCTaskImporter.m; sourceTree = "<group>"; };
 		04FB64491BB4A11A00D0A50D /* APCModel 7.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "APCModel 7.xcdatamodel"; sourceTree = "<group>"; };
@@ -1548,6 +1573,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		04B953BE1F44ACB800074ABF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				04B953C51F44ACB800074ABF /* openssl.framework */,
+				04B953C71F44ACB800074ABF /* opensslTests.xctest */,
+				04B953C91F44ACB800074ABF /* libOpenSSL.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		04FB64441BB4880000D0A50D /* TaskImporter */ = {
 			isa = PBXGroup;
 			children = (
@@ -2208,6 +2243,7 @@
 		F5179B1F19D09128001DCCB7 = {
 			isa = PBXGroup;
 			children = (
+				04B953BD1F44ACB800074ABF /* openssl.xcodeproj */,
 				F5F128821A2F78490015982C /* APCAppCore */,
 				F5F129D91A2F78490015982C /* APCAppCoreTests */,
 				F5F12B211A2F85FF0015982C /* Frameworks */,
@@ -3547,6 +3583,12 @@
 			mainGroup = F5179B1F19D09128001DCCB7;
 			productRefGroup = F5179B2A19D09128001DCCB7 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 04B953BE1F44ACB800074ABF /* Products */;
+					ProjectRef = 04B953BD1F44ACB800074ABF /* openssl.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				F5179B2819D09128001DCCB7 /* APCAppCore */,
@@ -3554,6 +3596,30 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		04B953C51F44ACB800074ABF /* openssl.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = openssl.framework;
+			remoteRef = 04B953C41F44ACB800074ABF /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		04B953C71F44ACB800074ABF /* opensslTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = opensslTests.xctest;
+			remoteRef = 04B953C61F44ACB800074ABF /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		04B953C91F44ACB800074ABF /* libOpenSSL.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libOpenSSL.a;
+			remoteRef = 04B953C81F44ACB800074ABF /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		F5179B2719D09128001DCCB7 /* Resources */ = {

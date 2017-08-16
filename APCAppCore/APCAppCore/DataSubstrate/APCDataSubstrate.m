@@ -89,6 +89,7 @@ static NSString * const kAPCJSONFileKeyTasks     = @"tasks";
         _lastKnownDate = [NSDate date];
         _countOfTotalCompletedTasksForToday = 0;
         _countOfTotalCompletedTasksForToday = 0;
+        _studyIdentifier = studyIdentifier;
 
         [self setUpCoreDataStackWithPersistentStorePath:storePath additionalModels:mergedModels];
         [self setUpCurrentUser:self.persistentContext];
